@@ -20,14 +20,14 @@ logMessage("I am capable", 1000);
 //  a Promise with user data when given a user ID. Write an asynchronous function 
 // that fetches and logs the data for each user ID one by one, in sequence.
 
-let  num=[30,40,50,60];
+const  num=[30,40,50,60];
 const fetchData =async ()=>{
     for(let id in num){
                 let data= await getUserData(id);
                 console.log(data);
             }
 }
-let getUserData=(id)=>{
+const getUserData=(id)=>{
     return new Promise(resolve=>{setTimeout(()=>{ resolve(`data number for user: ${id}`);
         
            
@@ -46,7 +46,31 @@ fetchData()
 //  task is successful, and a custom error message if there's an error.
 
 
+function performTask() {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        const success = true; 
+  
+        if (success) {
+          resolve("Task is successful");
+        } else {
+          reject("Error occurred ");
+        }
+      }, 1000); 
+    });
+  }
 
+
+  function taskSuccessful() {
+    performTask()
+      .then((answer) => {
+        console.log("Successfully:", answer); 
+      })
+      .catch((error) => {
+        console.log("Error:", error); 
+      });
+  }
+  taskSuccessful();
 
 
 
